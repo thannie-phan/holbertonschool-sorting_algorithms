@@ -4,36 +4,39 @@
 #include "sort.h"
 
 /**
- * bubble_sort - sorts array of integers in ascending order using Bubble sort
- * @array: the array of int to be sorted
- * @size: how many elements in array
+ * insertion_sort_list - sort doubly linked list int in asc order
+ * @list: the list to sort
+ *
  *
  * Return: void
  */
 
-void bubble_sort(int *array, size_t size)
+void insertion_sort_list(listint_t **list)
 {
-	size_t total_pass = 0, actual_pass;
-	int temp;
+	listint_t *current, *temp;
 
-	if (array == NULL || size < 2)
-		return;
+	current = (*list)->next;
 
-	while (total_pass < size - 1)
-		{
-		actual_pass = 0;
-			while (actual_pass < size - total_pass - 1)
+	while (current != NULL)
+	{
+		temp = current->next;
+		while (current->prev != NULL && current->n < (current->prev)->n)
 			{
-				if (array[actual_pass] > array[actual_pass + 1])
-				{
-					temp = array[actual_pass];
-					array[actual_pass] = array[actual_pass + 1];
-					array[actual_pass + 1] = temp;
-					print_array(array, size);
-				}
-				actual_pass++;
+			(current->prev)->next = current->next;
+
+			if (current->next != NULL)
+			(current->next)->prev = current->prev;
+
+			current->next = current->prev;
+			current->prev = (current->prev)->prev;
+			(current->next)->prev = current;
+
+			if (current->prev == NULL)
+			*list = current;
+			else
+			(current->prev)->next = current;
+			print_list(*list);
 			}
-		}
+		current = temp;
+	}
 }
-
-
