@@ -24,7 +24,7 @@ void selection_sort(int *array, size_t size)
 		smallest_value = pos_being_checked;
 		pos_being_checked = current_pos + 1;
 
-		while (pos_being checked < size)
+		while (pos_being_checked < size)
 		{
 			if (array[pos_being_checked] < array[smallest_value])
 			smallest_value = pos_being_checked;
