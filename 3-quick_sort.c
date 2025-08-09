@@ -49,8 +49,11 @@ int partition_arr(int *array, size_t size, ssize_t start_pos, ssize_t end_pos)
 	}
 	if ((pos_for_smaller + 1) != end_pos)
 	{
-		swap_two_values(&array[pos_for_smaller + 1], &array[end_pos]);
-		print_array(array, size);
+		if (array[pos_for_smaller + 1] != array[end_pos])
+		{
+			swap_two_values(&array[pos_for_smaller + 1], &array[end_pos]);
+			print_array(array, size);
+		}
 	}
 
 	return (pos_for_smaller + 1);
@@ -66,6 +69,7 @@ int partition_arr(int *array, size_t size, ssize_t start_pos, ssize_t end_pos)
  * Return: int of where pivot is
  */
 void help_sort(int *array, size_t size, ssize_t start_pos, ssize_t end_pos)
+
 {
 	if (start_pos < end_pos)
 	{
