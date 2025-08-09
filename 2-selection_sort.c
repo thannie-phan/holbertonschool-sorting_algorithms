@@ -29,7 +29,7 @@ void selection_sort(int *array, size_t size)
 			if (array[pos_being_checked] < array[smallest_value])
 			smallest_value = pos_being_checked;
 		pos_being_checked++;
-	}
+		}
 
 	if (smallest_value != current_pos)
 	{
@@ -40,4 +40,5 @@ void selection_sort(int *array, size_t size)
 		print_array(array, size);
 	}
 	current_pos++;
+	}
 }
